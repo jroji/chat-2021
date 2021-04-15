@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+  padding: 0;
+  margin: 0;
+  background-color: lightgray;
+
+  --primary-color: #efca5d;
+  --color-white: #fff;
+  --message-color: var(--primary-color);
+  --own-message-color: #ffdc9c;
+}
