@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-messages',
@@ -6,13 +6,5 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./messages.component.css']
 })
 export class MessagesComponent {
-  public messages: string[] = [];
-
-  public updateMessage(input: HTMLInputElement) {
-    this.messages = [...this.messages, input.value];
-  }
-
-  public notifyClick(event) {
-    alert(JSON.stringify(event));
-  }
+  @Input() public messages: string[] = [];
 }

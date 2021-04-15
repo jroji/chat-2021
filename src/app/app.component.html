@@ -1,1 +1,7 @@
-<app-messages></app-messages>
+<app-messages
+  [messages]="messagesFromApp"
+></app-messages>
+<app-text-button
+  (textSent)="pushMessage($event)"
+  label="Enviar mensaje"
+></app-text-button>

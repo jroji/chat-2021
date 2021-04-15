@@ -1,9 +1,7 @@
 <p
+  class="message"
   *ngFor="let message of messages; let i = index;"
+  [ngClass]="{ 'even': i % 2 == 0 }"
 >{{ message }}</p>
-<div class="bar">
-  <input #input>
-  <button (click)="updateMessage(input)">Send message</button>
-</div>
 
 <h3 *ngIf="messages.length == 0">Todavía no hay mensajes</h3>
