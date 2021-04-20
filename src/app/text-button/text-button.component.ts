@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-text-button',
@@ -9,11 +9,19 @@ export class TextButtonComponent implements OnInit {
   @Input() public label: string = 'Send!';
   @Output() public textSent = new EventEmitter();
 
-  ngOnInit(): void { }
+  constructor(private component: ElementRef) {}
+
+  ngOnInit(): void {
+    this.component.nativeElement.setAttribute('role', 'button');
+  }
 
   public sendMessage(input: HTMLInputElement) {
     this.textSent.emit(input.value);
     input.value = '';
+  }
+
+  public clearMessage() {
+    alert("LIMPIANDO");
   }
 
 }

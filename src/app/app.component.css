@@ -1,0 +1,12 @@
+.stories {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background-color: white;
+}
+
+:host {
+  background: url('https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX13872556.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}

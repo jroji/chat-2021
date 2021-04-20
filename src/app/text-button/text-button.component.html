@@ -1,2 +1,8 @@
-<input #input>
-<button (click)="sendMessage(input)"> {{ label }}</button>
+<mat-form-field>
+  <mat-label>Clearable input</mat-label>
+  <input #input matInput type="text" >
+</mat-form-field>
+
+<button mat-icon-button (click)="sendMessage(input)">
+  <mat-icon color="primary">{{ label }}</mat-icon>
+</button>

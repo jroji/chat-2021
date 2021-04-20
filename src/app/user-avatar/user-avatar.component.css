@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+img {
+  border-radius: 100%;
+}
+
+p {
+  margin-bottom: 0
+}
