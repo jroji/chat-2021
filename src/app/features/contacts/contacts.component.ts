@@ -14,8 +14,7 @@ export class ContactsComponent implements OnInit, OnDestroy {
   public subs: Subscription;
 
   constructor(
-    private userService: UserService,
-    @Inject('CONFIG') public config: string,
+    private userService: UserService
   ) {}
 
   public ngOnInit(): void {

@@ -4,7 +4,7 @@ import { ChatComponent } from '@features/chat/chat.component';
 
 const routes: Routes = [
   {
-    path: 'contacts',
+    path: '',
     // component: ContactsComponent
     loadChildren: () => import('@features/contacts/contacts.module').then((m) => m.ContactsModule)
   },
