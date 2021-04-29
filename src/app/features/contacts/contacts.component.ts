@@ -11,7 +11,6 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class ContactsComponent implements OnInit, OnDestroy {
   public users: User[] = [];
-  public subs: Subscription;
 
   constructor(
     private userService: UserService
@@ -22,12 +21,10 @@ export class ContactsComponent implements OnInit, OnDestroy {
       this.users = users;
     });
 
-    this.subs.add(
-      this.userService.activeUser$
-        .subscribe((user) => {
-          console.log("hello from contacts", user);
-        })
-      );
+    this.userService.activeUser$
+      .subscribe((user) => {
+        console.log("hello from contacts", user);
+      })
   }
 
   public setActiveUser(user: User) {
@@ -35,6 +32,5 @@ export class ContactsComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy() {
-    this.subs.unsubscribe();
   }
 }
