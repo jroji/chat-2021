@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  <span routerLink="/contacts">My Chat - {{ activeUser?.name?.first }}</span>
+</mat-toolbar>
+<div class="stories">
+  <app-user-avatar
+    *ngFor="let user of users"
+    [routerLink]="['chat', user.name.first]"
+    [name]="user.name.first"
+    [image]="user.picture.thumbnail"
+  ></app-user-avatar>
+  <app-user-avatar
+    [routerLink]="['chat', 'dummy']"
+    [name]="'dummy'"
+  ></app-user-avatar>
+</div>
+
+<router-outlet></router-outlet>

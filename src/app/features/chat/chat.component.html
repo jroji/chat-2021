@@ -1,0 +1,9 @@
+<h1 *ngIf="name">Talking to {{ name }}</h1>
+<app-messages
+  [messages]="messagesFromApp"
+></app-messages>
+
+<app-text-button
+  (textSent)="pushMessage($event)"
+  label="quickreply"
+></app-text-button>

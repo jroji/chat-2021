@@ -1,0 +1,15 @@
+a {
+  display: flex;
+  padding: 10px;
+  background: white;
+  margin: 2px 0;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  flex-wrap: wrap;
+}
+
+a img {
+  margin-right: 16px;
+  border-radius: 100%;
+}
