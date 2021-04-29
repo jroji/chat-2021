@@ -11,6 +11,8 @@ import { UserService } from './services/user.service';
 import { ChatModule } from '@features/chat/chat.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { environment } from 'src/environments/environment';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     ChatModule,

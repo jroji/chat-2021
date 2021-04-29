@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "chat-2c012": {
+      "hosting": {
+        "chat-new": [
+          "chat-2c012"
+        ]
+      }
+    }
+  }
+}
