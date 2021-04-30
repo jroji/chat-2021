@@ -1,0 +1,41 @@
+<form [formGroup]="userForm">
+
+    <input type="text" formControlName="email">
+    <p *ngIf="userForm.get('name').errors?.required">El email es necesario</p>
+    <p *ngIf="userForm.get('email').errors?.email">Debe ser un email válido</p>
+
+  <div formGroupName="name">
+      <input
+        *ngFor="let control of fields"
+        type="text"
+        [formControlName]="control">
+  </div>
+
+</form>
+
+<button (click)="loadData()">Cargar usuario</button>
+<!-- <form #userForm="ngForm" (ngSubmit)="showData($event, userForm)">
+
+<mat-form-field>
+  <mat-label>Name</mat-label>
+  <input
+    matInput name="title" #title="ngModel" id="title" type="text" [(ngModel)]="user.name.title" required>
+  <p *ngIf="title.invalid && title.touched">
+    El title es requerido
+  </p>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>first</mat-label>
+  <input matInput name="first" id="first" type="text" [(ngModel)]="user.name.first">
+</mat-form-field>
+
+
+<mat-form-field>
+  <mat-label>last</mat-label>
+  <input matInput name="last" id="last" type="text" [(ngModel)]="user.name.last">
+</mat-form-field>
+
+  <button [disabled]="userForm.invalid">ACEPTAR</button>
+</form>
+<button [disabled]="userForm.invalid" (click)="userForm.reset()">RESET</button> -->

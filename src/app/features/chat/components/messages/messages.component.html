@@ -2,6 +2,6 @@
   class="message"
   *ngFor="let message of messages; let i = index;"
   [ngClass]="{ 'even': i % 2 == 0 }"
->{{ message | mimimi }}</p>
+>{{ message }}</p>
 
 <h3 *ngIf="messages.length == 0">Todavía no hay mensajes</h3>

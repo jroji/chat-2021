@@ -11,18 +11,18 @@ export interface Info {
 }
 
 export interface User {
-  gender:     string;
-  name:       Name;
-  location:   Location;
-  email:      string;
-  login:      Login;
-  dob:        Dob;
-  registered: Dob;
-  phone:      string;
-  cell:       string;
-  id:         ID;
-  picture:    Picture;
-  nat:        string;
+  gender?:     string;
+  name?:       Name;
+  location?:   Location;
+  email?:      string;
+  login?:      Login;
+  dob?:        Dob;
+  registered?: Dob;
+  phone?:      string;
+  cell?:       string;
+  id?:         ID;
+  picture?:    Picture;
+  nat?:        string;
 }
 
 export interface Dob {

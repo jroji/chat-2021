@@ -9,6 +9,11 @@ const routes: Routes = [
     loadChildren: () => import('@features/contacts/contacts.module').then((m) => m.ContactsModule)
   },
   {
+    path: 'new',
+    // component: ContactsComponent
+    loadChildren: () => import('@features/new/new.module').then((m) => m.NewModule)
+  },
+  {
     path: 'chat/:name',
     component: ChatComponent,
     // canActivate: [AuthGuard]

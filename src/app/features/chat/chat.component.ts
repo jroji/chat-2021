@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { debounceTime, map } from 'rxjs/operators';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -20,12 +21,17 @@ export class ChatComponent implements OnInit {
       this.name = params.name;
     });
 
-    this.firestore.collection('chats').valueChanges().subscribe((values) => {
-      console.log(values);
-    })
+    this.firestore.collection('chats').valueChanges()
+      .pipe(
+        debounceTime(1000),
+        map((values) => values.map((message) => message['text']))
+      )
+      .subscribe((values) => {
+        this.messagesFromApp = values;
+      });
   }
 
   pushMessage($event) {
-    this.messagesFromApp = [...this.messagesFromApp, $event];
+    this.firestore.collection('chats').add({ text: $event });
   }
 }
