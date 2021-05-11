@@ -1,23 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { User } from '@shared/models/user.model';
-import { fromEvent } from 'rxjs';
+import { Subject } from 'rxjs';
+import { filter, take, takeUntil } from 'rxjs/operators';
 import { UserService } from '../services/user.service';
+import { fetchUsers, saveUsers } from '../store/actions/users.actions';
 @Component({
   selector: 'app-component',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  public users: any;
+export class AppComponent implements OnDestroy {
+  public users: any = [];
   public activeUser?: User;
+  protected readonly clearSubscription$ = new Subject();
 
-  constructor(private userService: UserService) {
-    this.userService.getUsers().subscribe((users) => {
-      this.users = users;
-    });
+  constructor(private store: Store<any>) {
+    this.store.dispatch(fetchUsers());
+    this.store.select('users')
+      .pipe(takeUntil(this.clearSubscription$))
+      .subscribe((users) => {
+        this.users = users.userList;
+        this.activeUser = users.activeUser;
+      });
+  }
 
-    this.userService.activeUser$.subscribe(user => {
-      this.activeUser = user;
-    });
+  ngOnDestroy() {
+    this.clearSubscription$.next();
+    this.clearSubscription$.complete();
   }
 }

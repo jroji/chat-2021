@@ -1,8 +1,10 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { User } from '@shared/models/user.model';
 import { Observable, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { UserService } from 'src/app/core/services/user.service';
+import { cleanUsers, saveUsers, setUser } from 'src/app/core/store/actions/users.actions';
 
 @Component({
   selector: 'app-contacts',
@@ -12,23 +14,20 @@ import { UserService } from 'src/app/core/services/user.service';
 export class ContactsComponent implements OnInit, OnDestroy {
   public users: User[] = [];
 
-  constructor(
-    private userService: UserService
-  ) {}
+  constructor(private store: Store<any>) {}
 
   public ngOnInit(): void {
-    this.userService.getUsers().subscribe((users) => {
-      this.users = users;
-    });
-
-    this.userService.activeUser$
-      .subscribe((user) => {
-        console.log("hello from contacts", user);
-      })
+    this.store.select('users').subscribe((users) => {
+      this.users = users.userList;
+    })
   }
 
   public setActiveUser(user: User) {
-    this.userService.setUser(user);
+    this.store.dispatch(setUser({ activeUser: user }));
+  }
+
+  public deleteUsers = () => {
+    this.store.dispatch(cleanUsers());
   }
 
   public ngOnDestroy() {

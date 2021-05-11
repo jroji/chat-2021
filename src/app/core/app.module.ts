@@ -13,6 +13,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { StoreModule } from '@ngrx/store';
+import { usersReducer } from './store/reducers/users.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffectsService } from './store/effects/user.effects.service';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     AppRoutingModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
+    StoreModule.forRoot({ users: usersReducer }),
+    EffectsModule.forRoot([UserEffectsService]),
     AngularFirestoreModule,
     BrowserAnimationsModule,
     MatToolbarModule,
