@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { User } from '@shared/models/user.model';
-import { fromEvent } from 'rxjs';
 import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-component',
